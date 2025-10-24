@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--colorBgLayout, rgb(245, 245, 245));
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  padding: 52px 32px 32px 32px;
+  border-radius: 6px 6px;
+  background-color: white;
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.login__companyName {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Fjalla+One", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+}
+.login__title {
+  max-width: 300px;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+.login__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.login__form__inputLogin {
+  padding: 0 11px 0 11px;
+  width: 376px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid rgb(217, 217, 217);
+  border-radius: 8px;
+}
+.login__form__inputLogin::-moz-placeholder {
+  color: var(--Components-Input-Global-colorTextPlaceholder, rgba(0, 0, 0, 0.25));
+  font-family: "Fjalla+One", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: var(--Components-Input-Global-lineHeightLG, 24px);
+  background: url("../public/IconLogin.svg") no-repeat;
+}
+.login__form__inputLogin::placeholder {
+  color: var(--Components-Input-Global-colorTextPlaceholder, rgba(0, 0, 0, 0.25));
+  font-family: "Fjalla+One", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: var(--Components-Input-Global-lineHeightLG, 24px);
+  background: url("../public/IconLogin.svg") no-repeat;
+}
+.login__form__inputLogin:focus {
+  outline: none;
+  border: 1px solid rgb(22, 119, 255);
+}
+.login__form__inputPassword {
+  padding: 12px 43px 12px 11px;
+  font-size: 16px;
+  width: 376px;
+  height: 40px;
+  box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid rgb(217, 217, 217);
+  border-radius: 8px;
+}
+.login__form__inputPassword_showPassword {
+  position: absolute;
+  margin-top: 191px;
+  margin-left: 340px;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  background: none;
+  border: none;
+}
+.login__form__inputPassword::-moz-placeholder {
+  color: var(--Components-Input-Global-colorTextPlaceholder, rgba(0, 0, 0, 0.25));
+  display: flex;
+  background: url("../public/IconPassword.svg") no-repeat;
+}
+.login__form__inputPassword::placeholder {
+  color: var(--Components-Input-Global-colorTextPlaceholder, rgba(0, 0, 0, 0.25));
+  display: flex;
+  background: url("../public/IconPassword.svg") no-repeat;
+}
+.login__form__inputPassword:focus {
+  outline: none;
+  border: 1px solid rgb(22, 119, 255);
+}
+.login__form__button {
+  width: 376px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid rgb(217, 217, 217);
+  font-family: "Fjalla+One", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.login__form__button_active {
+  background: rgb(22, 119, 255);
+  color: white;
+  cursor: pointer;
+}
+.login__form__button_disable {
+  color: rgba(82, 80, 80, 0.25);
+  background: var(--Components-Button-Global-colorBgContainerDisabled, rgba(0, 0, 0, 0.04));
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.login__form__hidden {
+  color: red;
+  font-family: "Fjalla+One", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  display: none;
+}
+.login__form__showError {
+  color: red;
+  font-family: "Fjalla+One", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.auntification {
+  padding: 52px 32px 32px 32px;
+  border-radius: 6px 6px;
+  background-color: white;
+  width: 440px;
+}
+.auntification__companyName {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Fjalla+One", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+}
+.auntification__title {
+  margin-top: 24px;
+  font-family: "Fjalla+One", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+.auntification__text {
+  font-family: "Fjalla+One", sans-serif;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: var(--Typography-LineHeight-lineHeightLG, 24px);
+}
+.auntification__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+.auntification__form__inputsBox {
+  display: flex;
+  gap: 12px;
+}
+.auntification__form__input {
+  width: 40px;
+  height: 60px;
+  padding: 0 11px 0 11px;
+  border-radius: 8px;
+  border: 1px solid var(--Components-Input-Global-colorBorder, rgb(217, 217, 217));
+}
+.auntification__form__input_error {
+  border: 2px solid red;
+}
+.auntification__form__button {
+  margin: 12px auto 0 auto;
+  display: block;
+  width: 376px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  /* Component/Button/primaryShadow */
+  box-shadow: 0px var(--Components-Button-Global-controlOutlineWidth, 2px) 0px 0px var(--Components-Button-Global-controlOutline, rgba(5, 145, 255, 0.1));
+  background: var(--Components-Button-Global-colorPrimary, rgb(22, 119, 255));
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Fjalla+One", sans-serif;
+  color: white;
+}
+.auntification__form__button_hidden {
+  display: none;
+}
+.auntification__form__button_error {
+  color: rgba(82, 80, 80, 0.25);
+  background: var(--Components-Button-Global-colorBgContainerDisabled, rgba(0, 0, 0, 0.04));
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.auntification__form__error {
+  margin-top: 10px;
+  color: red;
+  text-align: start;
+}
+.auntification__form__error_hidden {
+  display: none;
+}
+.auntification__sendCode {
+  margin: 12px auto 0 auto;
+  display: block;
+  width: 376px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  /* Component/Button/primaryShadow */
+  box-shadow: 0px var(--Components-Button-Global-controlOutlineWidth, 2px) 0px 0px var(--Components-Button-Global-controlOutline, rgba(5, 145, 255, 0.1));
+  background: var(--Components-Button-Global-colorPrimary, rgb(22, 119, 255));
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Fjalla+One", sans-serif;
+  color: white;
+}
+.auntification__sendCode_hidden {
+  display: none;
+}/*# sourceMappingURL=index.css.map */
