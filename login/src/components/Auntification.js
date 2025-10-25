@@ -9,6 +9,7 @@ function Auntification() {
   "use server";
 
   const location = useLocation();
+  const navigate = useNavigate();
   const { data, isError, isLoading } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
@@ -22,14 +23,20 @@ function Auntification() {
     console.log(isError.message);
   }
 
-  //проверка возврата в браузере
-  // const returnBtnClick = () => {
-  //   navigate("/", { state: { returnUser: true } });
-  // };
+  const [buttonContinue, setButtonContinue] = useState("hidden");
+  const [errorInput, setErrorInput] = useState("hidden");
+  const [errorInputBox, setErrorInputBox] = useState("");
+  const [sendCode, setSendCode] = useState("hidden");
+  const [num1, setnum1] = useState("");
+  const [num2, setnum2] = useState("");
+  const [num3, setnum3] = useState("");
+  const [num4, setnum4] = useState("");
+  const [num5, setnum5] = useState("");
+  const [num6, setnum6] = useState("");
+  let formValues = [num1, num2, num3, num4, num5, num6];
+
   useEffect(() => {
     try {
-      console.log(location.state.isLogin);
-
       if (location.state.isLogin !== "false") {
         navigate("/");
       } else {
@@ -38,13 +45,20 @@ function Auntification() {
     } catch (error) {
       navigate("/");
     }
+
+    setTimeout(() => {
+      location.state.isLogin = "true";
+      if (buttonContinue === "hidden") {
+        return setSendCode("active");
+      }
+      location.state.isLogin = "true";
+    }, 5000);
   }, []);
 
-  const navigate = useNavigate();
   try {
     console.log(location.state.isLogin);
 
-    if (location.state.isLogin == "false") {
+    if (location.state.isLogin === "false") {
       navigate("/");
     } else {
     }
@@ -53,18 +67,6 @@ function Auntification() {
     navigate("/");
   }
 
-  const [buttonContinue, setButtonContinue] = useState("hidden");
-  const [errorInput, setErrorInput] = useState("hidden");
-  const [errorInputBox, setErrorInputBox] = useState("");
-  const [sendCode, setSendCode] = useState("hidden");
-
-  const [num1, setnum1] = useState("");
-  const [num2, setnum2] = useState("");
-  const [num3, setnum3] = useState("");
-  const [num4, setnum4] = useState("");
-  const [num5, setnum5] = useState("");
-  const [num6, setnum6] = useState("");
-  let formValues = [num1, num2, num3, num3, num5, num6];
   const oneNumberInput = (e) => {
     location.state.isLogin = "true";
     console.log(`ввелди число ${location.state.isLogin}`);
@@ -72,6 +74,7 @@ function Auntification() {
       formValues[0] = e.value;
       if (formValues[0] !== "" && formValues[1] !== "" && formValues[2] !== "" && formValues[3] !== "" && formValues[4] !== "" && formValues[5] !== "") {
         setButtonContinue("active");
+        setSendCode("hidden");
         console.log(formValues);
       }
       if (Number(e.value)) {
@@ -83,6 +86,7 @@ function Auntification() {
       formValues[1] = e.value;
       if (formValues[0] !== "" && formValues[1] !== "" && formValues[2] !== "" && formValues[3] !== "" && formValues[4] !== "" && formValues[5] !== "") {
         setButtonContinue("active");
+        setSendCode("hidden");
         console.log(formValues);
       }
       if (Number(e.value)) {
@@ -94,6 +98,7 @@ function Auntification() {
       formValues[2] = e.value;
       if (formValues[0] !== "" && formValues[1] !== "" && formValues[2] !== "" && formValues[3] !== "" && formValues[4] !== "" && formValues[5] !== "") {
         setButtonContinue("active");
+        setSendCode("hidden");
         console.log(formValues);
       }
       if (Number(e.value)) {
@@ -105,6 +110,7 @@ function Auntification() {
       formValues[3] = e.value;
       if (formValues[0] !== "" && formValues[1] !== "" && formValues[2] !== "" && formValues[3] !== "" && formValues[4] !== "" && formValues[5] !== "") {
         setButtonContinue("active");
+        setSendCode("hidden");
         console.log(formValues);
       }
       if (Number(e.value)) {
@@ -116,6 +122,7 @@ function Auntification() {
       formValues[4] = e.value;
       if (formValues[0] !== "" && formValues[1] !== "" && formValues[2] !== "" && formValues[3] !== "" && formValues[4] !== "" && formValues[5] !== "") {
         setButtonContinue("active");
+        setSendCode("hidden");
         console.log(formValues);
       }
       if (Number(e.value)) {
@@ -127,6 +134,7 @@ function Auntification() {
       formValues[5] = e.value;
       if (formValues[0] !== "" && formValues[1] !== "" && formValues[2] !== "" && formValues[3] !== "" && formValues[4] !== "" && formValues[5] !== "") {
         setButtonContinue("active");
+        setSendCode("hidden");
         console.log(formValues);
       }
       if (Number(e.value)) {
@@ -144,14 +152,17 @@ function Auntification() {
 
     try {
       const inputChildren = e.target.children[0].childNodes;
+      console.log(inputChildren);
       let codes = [];
-      for (let i = 0; i < inputChildren.length; i++) {
+      for (let i = 0; i < inputChildren.length - 1; i++) {
         codes.push(inputChildren[i].value);
+        console.log(inputChildren[i].value);
       }
       let code = formValues.join("");
 
       code = code.substring(0, code.length - 1);
-      const answer = CodeAutefication(location.state.user[0], codes, data);
+      console.log(code);
+      const answer = CodeAutefication(location.state.user[0], code, data);
       console.log(answer);
 
       if (answer === false) {
@@ -165,6 +176,7 @@ function Auntification() {
         setnum5("");
         setnum6("");
         e.target.reset();
+
         console.log("ошибка");
       } else {
         console.log("Успешно авторизован");
@@ -173,6 +185,11 @@ function Auntification() {
       console.log(error.message);
     }
   };
+
+  const clickSendCode = () => {
+    // отправка зпроса на код на сервер
+    // По логике мы должны передадать пользователя 
+  }
 
   const frontWhow = () => {
     return (

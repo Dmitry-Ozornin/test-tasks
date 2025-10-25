@@ -4,7 +4,6 @@ export const Verefications = (formData, data) => {
       const answer = true;
       return answer;
     } else {
-      const answer = false;
       return false;
     }
   }
@@ -14,6 +13,7 @@ export const CodeAutefication = (user, formData, data) => {
   // добавлено для api, так как в нем 5 цифр в zipcode. Ввоодим 5 чисел как в api, шестое любое.
 
   for (let i = 0; i < data.length; i++) {
+    console.log(data[i].email , data[i].zipcode);
     if (data[i].email === user && data[i].zipcode === formData) {
       let answer = true;
       return answer;
